@@ -23,7 +23,7 @@ function love.load()
    
    --Start characters in their starting places
    witch = Witch:new(1,1)
-   cat = Familiar:new(1,2)
+   cat = Familiar:new(5,5)
    
    love.graphics.setBackgroundColor(0,0,255)
 end
@@ -70,19 +70,19 @@ function love.keypressed(key, isrepeat)
    end
    
    if key == 'right' or key == 'd' then
-      --go right
+      cat.x = cat.x + 1
    end
    
    if key == 'left' or key == 'a' then
-      --go left
+      cat.x = cat.x - 1
    end
    
    if key == 'up' or key == 'w' then
-      --go up
+      cat.y = cat.y - 1
    end
    
    if key == 'down' or key == 's' then
-      --go down
+      cat.y = cat.y + 1
    end
    
 end
