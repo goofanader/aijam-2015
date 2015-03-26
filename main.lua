@@ -29,7 +29,8 @@ function love.load()
 end
 
 function love.update(dt)
-   
+   witch:update(dt)
+   cat:update(dt)
 end
 
 function love.draw()
