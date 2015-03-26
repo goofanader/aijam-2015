@@ -1,6 +1,7 @@
 require("constants")
 require("libraries/bgCreator")
 require("classes/Familiar")
+require("classes/Witch")
 
 function love.load()
    tilesheet = love.graphics.newImage("assets/images/background/Ground_Tilesheet.png")
@@ -8,16 +9,43 @@ function love.load()
    sizeOfMap.x = 20
    sizeOfMap.y = 15
 
-   bg = BGCreator:new(tilesheet, 1, 16, 20, 15, sizeOfMap, sizeOfMap)
-
+   --bg = BGCreator:new(tilesheet, 1, 16, 20, 15, sizeOfMap, sizeOfMap)
+   
+   --Janky test map by Andrew!
+   map = {}
+   for i=1, 10 do
+      map[i] = {}
+      for j=1, 10 do
+         map[i][j] = 1
+      end
+   end
+   grass = love.graphics.newImage("assets/images/background/grass.png")
+   
+   --Start characters in their starting places
+   witch = Witch:new(1,1)
+   cat = Familiar:new(1,2)
+   
    love.graphics.setBackgroundColor(0,0,255)
 end
 
 function love.update(dt)
+   
 end
 
 function love.draw()
-   bg:draw()
+   --bg:draw()
+   
+   --janky test map by Andrew!
+   for i=1, #map do
+      for j=1, #map[i] do
+         love.graphics.setColor(255,255,255)
+         love.graphics.draw(grass, (i-1)*IMAGE_SIZE, (j-1)*IMAGE_SIZE, 0)
+      end
+   end
+   
+   witch:draw()
+   cat:draw()
+   
 end
 
 function love.keypressed(key, isrepeat)
@@ -40,4 +68,21 @@ function love.keypressed(key, isrepeat)
    if key == 'escape' then
       love.event.quit()
    end
+   
+   if key == 'right' or key == 'd' then
+      --go right
+   end
+   
+   if key == 'left' or key == 'a' then
+      --go left
+   end
+   
+   if key == 'up' or key == 'w' then
+      --go up
+   end
+   
+   if key == 'down' or key == 's' then
+      --go down
+   end
+   
 end
