@@ -1,5 +1,6 @@
 require("constants")
 require("libraries/bgCreator")
+require("classes/Familiar")
 
 function love.load()
    tilesheet = love.graphics.newImage("assets/images/background/Ground_Tilesheet.png")
